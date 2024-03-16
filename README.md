@@ -17,13 +17,10 @@ Analyze dependencies between AWS resources.
 Ensure resources are provisioned in the correct order to satisfy dependencies.
 Consider networking configurations, security groups, and access control requirements.
 
-
-
 **Below is the code for Step 3: Server Configuration (Ansible)**:
 
 1. Install Ansible:
 Follow the installation instructions for your operating system. Here's an example for Ubuntu:
-
 
 sudo apt update
 sudo apt install ansible
@@ -47,9 +44,9 @@ Copy code
         name: apache2
         state: started
         enabled: yes
+      
 **3. Configure Dynamic Inventory:**
 Use Ansible's dynamic inventory to automatically discover AWS resources. Download the ec2.py script and ec2.ini configuration file provided by Ansible. Make sure they are executable:
-
 
 wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
 wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
@@ -58,7 +55,6 @@ chmod +x ec2.py
 
 Modify ec2.ini file to include your AWS credentials:
 
-
 [ec2]
 regions = us-west-1
 aws_access_key = your_access_key
@@ -66,7 +62,6 @@ aws_secret_key = your_secret_key
 
 **4. Execute Playbooks:**
 Run the Ansible playbook against your AWS infrastructure to apply configurations. Use the ansible-playbook command, specifying the playbook file and dynamic inventory script:
-
 
 ansible-playbook -i ec2.py configure_ec2.yml
 
